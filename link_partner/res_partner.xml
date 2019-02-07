@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data> 
+ 
+ <!-- INHERITED FORM  Partner-->
+        <record id="view_partner_inherit_link" model="ir.ui.view">
+            <field name="name">partner.view.link.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">           
+	
+        <xpath expr="//div[@name='div_type']" position="after">
+        <field name="supplier_ids" widget="one2many_tags"/>
+        <field name="customer_ids" widget="one2many_tags"/>
+        </xpath>
+        </field>
+        </record>
+         <!-- INHERITED TREE  PARTNER-->
+        <record id="view_tree_partner_inherit_link" model="ir.ui.view">
+            <field name="name">partner.tree.link.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">           
+	
+        <field name="category_id" position="after">
+        <field name="supplier_ids" widget="one2many_tags"/>
+        <field name="customer_ids" widget="one2many_tags"/>
+       </field>
+        </field>
+        </record>
+           <!-- INHERITED SEARCH PARTNER-->
+        <record id="view_search_partner_inherit_link" model="ir.ui.view">
+            <field name="name">partner.search.link.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">           
+	
+        <field name="category_id" position="after">
+           <field name="supplier_ids" string="Achat" filter_domain="[('supplier_ids','ilike', self)]"/>
+           <field name="customer_ids" string="Vente" filter_domain="[('customer_ids','ilike', self)]"/>
+           
+       </field>
+        </field>
+        </record>
+         <!-- FORM SUPPLIER LINK-->
+        <record id="view_supplier_link" model="ir.ui.view">
+            <field name="name">supplier</field>
+            <field name="model">link.supplier</field>
+            <field name="arch" type="xml">           
+	        <form>
+	        <group>
+           <field name="name" />
+           </group>
+           </form>
+           
+        </field>
+        </record>
+        <!-- FORM CUSTOMER LINK-->
+        <record id="view_customer_link" model="ir.ui.view">
+            <field name="name">customer</field>
+            <field name="model">link.customer</field>
+            <field name="arch" type="xml">           
+	        <form>
+	        <group>
+           <field name="name" />
+           </group>
+           </form>
+           
+        </field>
+        </record>
+        </data>
+        </openerp>
