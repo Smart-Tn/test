@@ -8,7 +8,7 @@ from openerp.exceptions import  except_orm
 
 class link_customer(models.Model):
 
-    _name = 'link.customer'
+    _name = 'link'
     name=fields.Many2one('res.partner',"Client")
     partner_id=fields.Many2one('res.partner')
     
